@@ -60,6 +60,7 @@ public class GroupProjectSubway extends Application{
         Scene scene = new Scene(root, 600, 250);
 
         primaryStage.setTitle("Subway Order System");
+        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     
