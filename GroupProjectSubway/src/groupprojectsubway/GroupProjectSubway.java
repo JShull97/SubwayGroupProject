@@ -1,6 +1,6 @@
 
 //Program:  Group Project - Subway Sandwich
-//Developer: Carlene Dvorak
+//Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //Date:  4/12/2019
 //Purpose:  An application of automated ordering system for Subway
 
@@ -60,6 +60,7 @@ public class GroupProjectSubway extends Application{
         Scene scene = new Scene(root, 600, 250);
 
         primaryStage.setTitle("Subway Order System");
+        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     
