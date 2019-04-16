@@ -1,6 +1,6 @@
 
 //Program:  Group Project - Subway Sandwich
-//Developer: Carlene Dvorak
+//Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //Date:  4/12/2019
 //Purpose:  An application of automated ordering system for Subway
 
