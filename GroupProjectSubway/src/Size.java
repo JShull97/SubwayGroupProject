@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Carlene
+ * @author 
  */
 public class Size {
 
