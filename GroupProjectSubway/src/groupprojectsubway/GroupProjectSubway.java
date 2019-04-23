@@ -1,9 +1,7 @@
-
 //Program:  Group Project - Subway Sandwich
 //Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //Date:  4/12/2019
 //Purpose:  An application of automated ordering system for Subway
-
 package groupprojectsubway;
 
 import java.util.HashSet;
@@ -25,23 +23,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
 /**
  *
  * @author Carlene Dvorak
  */
-public class GroupProjectSubway extends Application{
-    
+public class GroupProjectSubway extends Application {
+
     @Override
     public void start(Stage primaryStage) {
 
-      HBox buttons = new HBox();
-      Button placeOrder = new Button();
-      placeOrder.setText("Place order:");
-      buttons.getChildren().add(placeOrder);
-      buttons.setAlignment(Pos.CENTER);
-        
+        HBox buttons = new HBox();
+        Button placeOrder = new Button();
+        placeOrder.setText("Place order:");
+        buttons.getChildren().add(placeOrder);
+        buttons.setAlignment(Pos.CENTER);
+
         // Start sandwich size
         RadioButton sixInch = new RadioButton("Six Inch");
         sixInch.setId("sixInch");
@@ -51,11 +47,12 @@ public class GroupProjectSubway extends Application{
         footLong.setToggleGroup(tg);
         HBox sizeBox = new HBox(15);
         sizeBox.getChildren().addAll(new Label("Size:    "), sixInch, footLong);
+        sizeBox.setId("size");
         sizeBox.setAlignment(Pos.CENTER);
         // end sandwich size
-        
+
         HBox bread = new HBox(15);
-        
+
         //start of bread type
         RadioButton italian = new RadioButton("Italian");
         RadioButton wholewht = new RadioButton("Whole Wheat");
@@ -66,17 +63,19 @@ public class GroupProjectSubway extends Application{
         wholewht.setToggleGroup(tg1);
         herb.setToggleGroup(tg1);
         Honey.setToggleGroup(tg1);
-        bread.getChildren().addAll(new Label("Bread:    "),italian,wholewht,Honey,herb);
+        bread.getChildren().addAll(new Label("Bread:    "), italian, wholewht, Honey, herb);
+        bread.setId("size");
         bread.setAlignment(Pos.CENTER);
-        bread.setPadding(new Insets (10, 50, 20,20));
-        
+        bread.setPadding(new Insets(10, 50, 20, 20));
+
         HBox pic = new HBox();
         ImageView imgBread = new ImageView("bread.jpg");//create a new image
+        imgBread.setId("shadow");
+
         pic.getChildren().add(imgBread);
         pic.setAlignment(Pos.CENTER);
-        
+
         //end of bread type
-        
         //tabs
         TabPane tabPane = new TabPane();
 
@@ -84,37 +83,35 @@ public class GroupProjectSubway extends Application{
         Tab tab2 = new Tab("Cheese");
         Tab tab3 = new Tab("Meat");
         Tab tab4 = new Tab("Veggies");
-        tabPane.getTabs().addAll(tab1,tab2,tab3,tab4);
-   
+        tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
+
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(20));
         root.setBottom(buttons);
         root.setCenter(pic);
         root.setBottom(bread);
         root.setTop(sizeBox);
-        
+
         // display order event listener
         placeOrder.setOnAction(e -> displayOrder());
-        
+
         Scene scene = new Scene(root, 600, 350);
-        
+
         //Styles
         scene.getStylesheets().add("./style.css");
         //Sets icon on top
-        
-        
-        
+
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
-    
+
     }//end of start
 
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     public void displayOrder() {
         // TODO
     }
