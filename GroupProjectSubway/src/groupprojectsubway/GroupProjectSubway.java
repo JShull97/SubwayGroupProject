@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -71,6 +73,15 @@ public class GroupProjectSubway extends Application{
         pic.setAlignment(Pos.CENTER);
         
         //end of bread type
+        
+        //tabs
+        TabPane tabPane = new TabPane();
+
+        Tab tab1 = new Tab("Bread");
+        Tab tab2 = new Tab("Cheese");
+        Tab tab3 = new Tab("Meat");
+        Tab tab4 = new Tab("Veggies");
+        tabPane.getTabs().addAll(tab1,tab2,tab3,tab4);
    
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(20));
