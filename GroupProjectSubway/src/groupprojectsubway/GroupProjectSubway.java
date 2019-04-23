@@ -1,8 +1,8 @@
 
-//Program:  Group Project - Subway Sandwich
-//Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
-//Date:  4/12/2019
-//Purpose:  An application of automated ordering system for Subway
+//  Program:  Group Project - Subway Sandwich
+//  Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
+//  Date:  4/12/2019
+//  Purpose:  An application of automated ordering system for Subway
 
 package groupprojectsubway;
 
@@ -15,8 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,26 +23,24 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
 /**
  *
  * @author Carlene Dvorak
  */
 public class GroupProjectSubway extends Application{
-    
+    Stage window;
     @Override
     public void start(Stage primaryStage) {
-
-      HBox buttons = new HBox();
+      window = primaryStage;
+        
+      // Declare buttons
+      Button nextBread = new Button("Next");
+      Button nextMeat = new Button("Next");
       Button placeOrder = new Button();
       placeOrder.setText("Place order:");
-      buttons.getChildren().add(placeOrder);
-      buttons.setAlignment(Pos.CENTER);
         
         // Start sandwich size
         RadioButton sixInch = new RadioButton("Six Inch");
-        sixInch.setId("sixInch");
         RadioButton footLong = new RadioButton("Footlong");
         ToggleGroup tg = new ToggleGroup();
         sixInch.setToggleGroup(tg);
@@ -61,52 +57,72 @@ public class GroupProjectSubway extends Application{
         RadioButton wholewht = new RadioButton("Whole Wheat");
         RadioButton Honey = new RadioButton("Honey Oat");
         RadioButton herb = new RadioButton("Italian Herb and Cheese");
-        ToggleGroup tg1 = new ToggleGroup();
-        italian.setToggleGroup(tg1);
-        wholewht.setToggleGroup(tg1);
-        herb.setToggleGroup(tg1);
-        Honey.setToggleGroup(tg1);
-        bread.getChildren().addAll(new Label("Bread:    "),italian,wholewht,Honey,herb);
+        ToggleGroup tgBread = new ToggleGroup();
+        italian.setToggleGroup(tgBread);
+        wholewht.setToggleGroup(tgBread);
+        herb.setToggleGroup(tgBread);
+        Honey.setToggleGroup(tgBread);
+        bread.getChildren().addAll(new Label("Bread:    "),italian, wholewht, Honey,herb);
         bread.setAlignment(Pos.CENTER);
         bread.setPadding(new Insets (10, 50, 20,20));
         
-        HBox pic = new HBox();
+        HBox breadPic = new HBox();
         ImageView imgBread = new ImageView("bread.jpg");//create a new image
-        pic.getChildren().add(imgBread);
-        pic.setAlignment(Pos.CENTER);
-        
+        breadPic.getChildren().add(imgBread);
+        breadPic.setAlignment(Pos.CENTER);
+        VBox vBoxBread = new VBox(5);
+        vBoxBread.getChildren().addAll(bread, nextBread);
         //end of bread type
         
-        //tabs
-        TabPane tabPane = new TabPane();
-
-        Tab tab1 = new Tab("Bread");
-        Tab tab2 = new Tab("Cheese");
-        Tab tab3 = new Tab("Meat");
-        Tab tab4 = new Tab("Veggies");
-        tabPane.getTabs().addAll(tab1,tab2,tab3,tab4);
-   
-        BorderPane root = new BorderPane();
-        root.setPadding(new Insets(20));
-        root.setBottom(buttons);
-        root.setCenter(pic);
-        root.setBottom(bread);
-        root.setTop(sizeBox);
+        // start meat type
+        RadioButton bfh = new RadioButton("Black Forest Ham");
+        RadioButton ccc = new RadioButton("Cold Cut Combo");
+        RadioButton bmt = new RadioButton("Italian BMT");
+        RadioButton turk = new RadioButton("Turkey Breast");
+        ToggleGroup tgMeat = new ToggleGroup();
+        bfh.setToggleGroup(tgMeat);
+        ccc.setToggleGroup(tgMeat);
+        bmt.setToggleGroup(tgMeat);
+        turk.setToggleGroup(tgMeat);
         
+        HBox meatPic = new HBox();
+        ImageView imgMeat = new ImageView("meats.jpg");//create a new image
+        meatPic.getChildren().add(imgMeat);
+        meatPic.setAlignment(Pos.CENTER);
+        HBox meatBox = new HBox(15);
+        meatBox.getChildren().addAll(new Label("Meats:    "), bfh, ccc, bmt, turk);
+        VBox vBoxMeat = new VBox(5);
+        vBoxMeat.getChildren().addAll(meatBox, nextMeat);
+        // end meat type
+        
+        
+        // panes
+        BorderPane breadPane = new BorderPane();
+        breadPane.setPadding(new Insets(20));
+        breadPane.setBottom(vBoxBread);
+        breadPane.setCenter(breadPic);
+        breadPane.setTop(sizeBox);
+   
+        BorderPane meatPane = new BorderPane();
+        meatPane.setPadding(new Insets(20));
+        meatPane.setBottom(vBoxMeat);
+        meatPane.setCenter(meatPic);
+        meatPane.setTop(meatBox);
+
+        // create all scenes
+        Scene breadScene = new Scene(breadPane, 600, 350);
+        Scene meatScene = new Scene(meatPane, 600, 350);
+        
+        // event listeners
+        nextBread.setOnAction(e -> window.setScene(meatScene));
         // display order event listener
         placeOrder.setOnAction(e -> displayOrder());
         
-        Scene scene = new Scene(root, 600, 350);
-        
-        //Styles
-        scene.getStylesheets().add("./style.css");
-        //Sets icon on top
-        
-        
-        
+
+
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
-        primaryStage.setScene(scene);
+        primaryStage.setScene(breadScene);
         primaryStage.show();
     
     }//end of start
