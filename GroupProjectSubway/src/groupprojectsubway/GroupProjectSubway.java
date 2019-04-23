@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
+
 /**
  *
  * @author Carlene Dvorak
@@ -33,7 +35,7 @@ public class GroupProjectSubway extends Application{
     
     @Override
     public void start(Stage primaryStage) {
-    
+
       HBox buttons = new HBox();
       Button placeOrder = new Button();
       placeOrder.setText("Place order:");
@@ -42,6 +44,7 @@ public class GroupProjectSubway extends Application{
         
         // Start sandwich size
         RadioButton sixInch = new RadioButton("Six Inch");
+        sixInch.setId("sixInch");
         RadioButton footLong = new RadioButton("Footlong");
         ToggleGroup tg = new ToggleGroup();
         sixInch.setToggleGroup(tg);
@@ -89,12 +92,18 @@ public class GroupProjectSubway extends Application{
         root.setCenter(pic);
         root.setBottom(bread);
         root.setTop(sizeBox);
-
+        
         // display order event listener
         placeOrder.setOnAction(e -> displayOrder());
         
         Scene scene = new Scene(root, 600, 350);
-
+        
+        //Styles
+        scene.getStylesheets().add("./style.css");
+        //Sets icon on top
+        
+        
+        
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
         primaryStage.setScene(scene);
