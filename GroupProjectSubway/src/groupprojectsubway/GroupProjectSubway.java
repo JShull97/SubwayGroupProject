@@ -1,13 +1,7 @@
-
 //  Program:  Group Project - Subway Sandwich
 //  Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //  Date:  4/12/2019
 //  Purpose:  An application of automated ordering system for Subway
-
-package groupprojectsubway;
-
-import java.util.HashSet;
-import java.util.Set;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -39,10 +32,8 @@ public class GroupProjectSubway extends Application{
       Button nextMeat = new Button("Next");
       Button nextCheese = new Button("Next");
       Button nextVeg = new Button("Next");
-
-
-      Button placeOrder = new Button();
-      placeOrder.setText("Place order:");
+      Button nextSauce = new Button("Next");
+      Button placeOrder = new Button("Place order:");
         
         // Start sandwich size
         RadioButton sixInch = new RadioButton("Six Inch");
@@ -73,7 +64,7 @@ public class GroupProjectSubway extends Application{
         bread.setPadding(new Insets (10, 50, 20,20));
         
         HBox breadPic = new HBox();
-        ImageView imgBread = new ImageView("images/bread.jpg");//create a new image
+        ImageView imgBread = new ImageView("images/bread.jpg");
         breadPic.getChildren().add(imgBread);
         breadPic.setAlignment(Pos.CENTER);
         VBox vBoxBread = new VBox(5);
@@ -92,7 +83,7 @@ public class GroupProjectSubway extends Application{
         turk.setToggleGroup(tgMeat);
         
         HBox meatPic = new HBox();
-        ImageView imgMeat = new ImageView("images/meats.jpg");//create a new image
+        ImageView imgMeat = new ImageView("images/meats.jpg");
         meatPic.getChildren().add(imgMeat);
         meatPic.setAlignment(Pos.CENTER);
         HBox meatBox = new HBox(15);
@@ -101,8 +92,10 @@ public class GroupProjectSubway extends Application{
         vBoxMeat.getChildren().addAll(meatBox, nextMeat);
         // end meat type
         
+        
+        // start cheese
         HBox cheesePic = new HBox();
-        ImageView imgCheese = new ImageView("images/cheese.jpg");//create a new image
+        ImageView imgCheese = new ImageView("images/cheese.jpg");
         cheesePic.getChildren().add(imgCheese);
         cheesePic.setAlignment(Pos.CENTER);
         HBox cheeseBox = new HBox(15);
@@ -119,15 +112,17 @@ public class GroupProjectSubway extends Application{
         sm.setToggleGroup(tgCheese);
         pj.setToggleGroup(tgCheese);
         cheeseBox.getChildren().addAll(new Label("Cheese:    "), amer, mc, sm,pj);
+        // end cheese
         
+        // start veggies
         HBox veggiePic = new HBox();
-        ImageView vegCheese = new ImageView("images/vegies2.jpg");//create a new image
-        veggiePic.getChildren().add(vegCheese);
+        ImageView imgVeg = new ImageView("images/vegies2.jpg");
+        veggiePic.getChildren().add(imgVeg);
         veggiePic.setAlignment(Pos.CENTER);
         HBox veggieBox = new HBox(15);
         VBox vBoxveg = new VBox(5);
-        vBoxveg.getChildren().addAll(new Label ("Veggies:    "),veggieBox, nextVeg);
-        
+        vBoxveg.getChildren().addAll(veggieBox, nextVeg);
+                
         RadioButton tom = new RadioButton("Tomatoe");
         RadioButton lettus = new RadioButton("Lettus");
         RadioButton pickle = new RadioButton("Pickles");
@@ -136,7 +131,44 @@ public class GroupProjectSubway extends Application{
         lettus.setToggleGroup(tgVeg);
         pickle.setToggleGroup(tgVeg);
         veggieBox.getChildren().addAll(new Label("Veggies:    "), tom, lettus, pickle);
-
+        // end veggies
+        
+        // start sauce
+        HBox saucePic = new HBox();
+        ImageView imgSauce = new ImageView("images/sauces2.jpg");
+        saucePic.getChildren().add(imgSauce);
+        saucePic.setAlignment(Pos.CENTER);
+        HBox sauceBox = new HBox(15);
+        VBox vBoxSauce = new VBox(5);
+        vBoxSauce.getChildren().addAll(sauceBox, nextSauce);
+                
+        RadioButton mayo = new RadioButton("Mayonnaise");
+        RadioButton must = new RadioButton("Mustard");
+        RadioButton ranch = new RadioButton("Ranch");
+        ToggleGroup tgSauce = new ToggleGroup();
+        mayo.setToggleGroup(tgSauce);
+        must.setToggleGroup(tgSauce);
+        ranch.setToggleGroup(tgSauce);
+        sauceBox.getChildren().addAll(new Label("Sauces:    "), mayo, must, ranch);
+        // end sauce
+        
+        // start salt and pepper
+        HBox spPic = new HBox();
+        ImageView imgSP = new ImageView("images/saltandpepper.jpg");
+        spPic.getChildren().add(imgSP);
+        spPic.setAlignment(Pos.CENTER);
+        HBox spBox = new HBox(15);
+        VBox vBoxSP = new VBox(5);
+        vBoxSP.getChildren().addAll(spBox, placeOrder);
+                
+        RadioButton y = new RadioButton("Yes");
+        RadioButton n = new RadioButton("No");
+        ToggleGroup tgSP = new ToggleGroup();
+        y.setToggleGroup(tgSP);
+        n.setToggleGroup(tgSP);
+        spBox.getChildren().addAll(new Label("Salt and Pepper?    "), y, n);
+        // end salt and pepper
+        
         
         // panes
         BorderPane breadPane = new BorderPane();
@@ -162,35 +194,46 @@ public class GroupProjectSubway extends Application{
         VegPane.setBottom(vBoxveg);
         VegPane.setCenter(veggiePic);
         VegPane.setTop(veggieBox);
-
+        
+        BorderPane saucePane = new BorderPane();
+        saucePane.setPadding(new Insets(20));
+        saucePane.setBottom(vBoxSauce);
+        saucePane.setCenter(saucePic);
+        saucePane.setTop(sauceBox);
+        
+        BorderPane spPane = new BorderPane();
+        spPane.setPadding(new Insets(20));
+        spPane.setBottom(vBoxSP);
+        spPane.setCenter(spPic);
+        spPane.setTop(spBox);
 
         
-
         // create all scenes
         Scene breadScene = new Scene(breadPane, 600, 350);
         Scene meatScene = new Scene(meatPane, 600, 350);
         Scene cheeseScene = new Scene(cheesePane, 600, 350);
         Scene VegScene = new Scene(VegPane, 600, 350);
+        Scene sauceScene = new Scene(saucePane, 600, 350);
+        Scene spScene = new Scene(spPane, 600, 350);
 
 
         // event listeners
         nextBread.setOnAction(e -> window.setScene(meatScene));
         nextMeat.setOnAction(e -> window.setScene(cheeseScene));
         nextCheese.setOnAction(e -> window.setScene(VegScene));
-//        nextVeg.setOnAction(e -> window.setScene(VegScene));
+        nextVeg.setOnAction(e -> window.setScene(sauceScene));
+        nextSauce.setOnAction(e -> window.setScene(spScene));
 
 
         // display order event listener
         placeOrder.setOnAction(e -> displayOrder());
         
-
-
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
         primaryStage.setScene(breadScene);
         primaryStage.show();
 
-    }//end of start
+    } // end of start
 
     public static void main(String[] args) {
         launch(args);
