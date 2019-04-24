@@ -2,10 +2,8 @@
 //  Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //  Date:  4/12/2019
 //  Purpose:  An application of automated ordering system for Subway
-
-package groupprojectsubway;
-
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+package groupprojectsubway;
 
 /**
  *
@@ -26,6 +25,30 @@ import javafx.stage.Stage;
  */
 public class GroupProjectSubway extends Application{
     Stage window;
+    // have radio buttons class fields so they can be refereced for displayOrder()
+    RadioButton sixInch = new RadioButton("Six Inch");
+    RadioButton footLong = new RadioButton("Footlong");
+    RadioButton italian = new RadioButton("Italian");
+    RadioButton wholewht = new RadioButton("Whole Wheat");
+    RadioButton Honey = new RadioButton("Honey Oat");
+    RadioButton herb = new RadioButton("Italian Herb and Cheese");
+    RadioButton bfh = new RadioButton("Black Forest Ham");
+    RadioButton ccc = new RadioButton("Cold Cut Combo");
+    RadioButton bmt = new RadioButton("Italian BMT");
+    RadioButton turk = new RadioButton("Turkey Breast");
+    RadioButton amer = new RadioButton("American");
+    RadioButton mc = new RadioButton("Monterey Cheddar");
+    RadioButton sm = new RadioButton("Shredded Mozzerella");
+    RadioButton pj = new RadioButton("Pepper Jack");
+    RadioButton tom = new RadioButton("Tomatoe");
+    RadioButton lettuce = new RadioButton("Lettuce");
+    RadioButton pickle = new RadioButton("Pickles");
+    RadioButton mayo = new RadioButton("Mayonnaise");
+    RadioButton must = new RadioButton("Mustard");
+    RadioButton ranch = new RadioButton("Ranch");
+    RadioButton y = new RadioButton("Yes");
+    RadioButton n = new RadioButton("No");
+    
     @Override
     public void start(Stage primaryStage) {
       window = primaryStage;
@@ -38,9 +61,7 @@ public class GroupProjectSubway extends Application{
       Button nextSauce = new Button("Next");
       Button placeOrder = new Button("Place order:");
         
-        // Start sandwich size
-        RadioButton sixInch = new RadioButton("Six Inch");
-        RadioButton footLong = new RadioButton("Footlong");
+        // Start sandwich size       
         ToggleGroup tg = new ToggleGroup();
         sixInch.setToggleGroup(tg);
         footLong.setToggleGroup(tg);
@@ -50,13 +71,8 @@ public class GroupProjectSubway extends Application{
         sizeBox.setAlignment(Pos.CENTER);
         // end sandwich size
 
-        HBox bread = new HBox(15);
-
         //start of bread type
-        RadioButton italian = new RadioButton("Italian");
-        RadioButton wholewht = new RadioButton("Whole Wheat");
-        RadioButton Honey = new RadioButton("Honey Oat");
-        RadioButton herb = new RadioButton("Italian Herb and Cheese");
+        HBox bread = new HBox(15);
         ToggleGroup tgBread = new ToggleGroup();
         italian.setToggleGroup(tgBread);
         wholewht.setToggleGroup(tgBread);
@@ -74,11 +90,7 @@ public class GroupProjectSubway extends Application{
         vBoxBread.getChildren().addAll(bread, nextBread);
         //end of bread type
         
-        // start meat type
-        RadioButton bfh = new RadioButton("Black Forest Ham");
-        RadioButton ccc = new RadioButton("Cold Cut Combo");
-        RadioButton bmt = new RadioButton("Italian BMT");
-        RadioButton turk = new RadioButton("Turkey Breast");
+        // start meat type   
         ToggleGroup tgMeat = new ToggleGroup();
         bfh.setToggleGroup(tgMeat);
         ccc.setToggleGroup(tgMeat);
@@ -93,8 +105,7 @@ public class GroupProjectSubway extends Application{
         meatBox.getChildren().addAll(new Label("Meats:    "), bfh, ccc, bmt, turk);
         VBox vBoxMeat = new VBox(5);
         vBoxMeat.getChildren().addAll(meatBox, nextMeat);
-        // end meat type
-        
+        // end meat type      
         
         // start cheese
         HBox cheesePic = new HBox();
@@ -103,12 +114,8 @@ public class GroupProjectSubway extends Application{
         cheesePic.setAlignment(Pos.CENTER);
         HBox cheeseBox = new HBox(15);
         VBox vBoxCheese = new VBox(5);
-        vBoxCheese.getChildren().addAll(cheeseBox, nextCheese);
+        vBoxCheese.getChildren().addAll(cheeseBox, nextCheese);     
         
-        RadioButton amer = new RadioButton("American");
-        RadioButton mc = new RadioButton("Monterey Cheddar");
-        RadioButton sm = new RadioButton("Shredded Mozzerella");
-        RadioButton pj = new RadioButton("Pepper Jack");
         ToggleGroup tgCheese = new ToggleGroup();
         amer.setToggleGroup(tgCheese);
         mc.setToggleGroup(tgCheese);
@@ -124,16 +131,13 @@ public class GroupProjectSubway extends Application{
         veggiePic.setAlignment(Pos.CENTER);
         HBox veggieBox = new HBox(15);
         VBox vBoxveg = new VBox(5);
-        vBoxveg.getChildren().addAll(veggieBox, nextVeg);
-                
-        RadioButton tom = new RadioButton("Tomatoe");
-        RadioButton lettus = new RadioButton("Lettus");
-        RadioButton pickle = new RadioButton("Pickles");
+        vBoxveg.getChildren().addAll(veggieBox, nextVeg);               
+        
         ToggleGroup tgVeg = new ToggleGroup();
         tom.setToggleGroup(tgVeg);
-        lettus.setToggleGroup(tgVeg);
+        lettuce.setToggleGroup(tgVeg);
         pickle.setToggleGroup(tgVeg);
-        veggieBox.getChildren().addAll(new Label("Veggies:    "), tom, lettus, pickle);
+        veggieBox.getChildren().addAll(new Label("Veggies:    "), tom, lettuce, pickle);
         // end veggies
         
         // start sauce
@@ -144,10 +148,7 @@ public class GroupProjectSubway extends Application{
         HBox sauceBox = new HBox(15);
         VBox vBoxSauce = new VBox(5);
         vBoxSauce.getChildren().addAll(sauceBox, nextSauce);
-                
-        RadioButton mayo = new RadioButton("Mayonnaise");
-        RadioButton must = new RadioButton("Mustard");
-        RadioButton ranch = new RadioButton("Ranch");
+                        
         ToggleGroup tgSauce = new ToggleGroup();
         mayo.setToggleGroup(tgSauce);
         must.setToggleGroup(tgSauce);
@@ -164,8 +165,6 @@ public class GroupProjectSubway extends Application{
         VBox vBoxSP = new VBox(5);
         vBoxSP.getChildren().addAll(spBox, placeOrder);
                 
-        RadioButton y = new RadioButton("Yes");
-        RadioButton n = new RadioButton("No");
         ToggleGroup tgSP = new ToggleGroup();
         y.setToggleGroup(tgSP);
         n.setToggleGroup(tgSP);
@@ -209,8 +208,7 @@ public class GroupProjectSubway extends Application{
         spPane.setBottom(vBoxSP);
         spPane.setCenter(spPic);
         spPane.setTop(spBox);
-
-        
+     
         // create all scenes
         Scene breadScene = new Scene(breadPane, 600, 350);
         Scene meatScene = new Scene(meatPane, 600, 350);
@@ -219,17 +217,24 @@ public class GroupProjectSubway extends Application{
         Scene sauceScene = new Scene(saucePane, 600, 350);
         Scene spScene = new Scene(spPane, 600, 350);
 
-
-        // event listeners
+        // button event listeners
         nextBread.setOnAction(e -> window.setScene(meatScene));
         nextMeat.setOnAction(e -> window.setScene(cheeseScene));
         nextCheese.setOnAction(e -> window.setScene(VegScene));
         nextVeg.setOnAction(e -> window.setScene(sauceScene));
         nextSauce.setOnAction(e -> window.setScene(spScene));
 
-
         // display order event listener
-        placeOrder.setOnAction(e -> displayOrder());
+        placeOrder.setOnAction((ActionEvent e) -> {
+            String order = displayOrder();
+            
+            BorderPane orderPane = new BorderPane();
+            orderPane.setPadding(new Insets(20));
+            orderPane.setCenter(new Label(order));
+            
+            Scene orderScene = new Scene(orderPane, 600, 350);
+            window.setScene(orderScene);
+      });
         
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
@@ -242,8 +247,71 @@ public class GroupProjectSubway extends Application{
         launch(args);
     }
 
-    public void displayOrder() {
-        // TODO
+    public String displayOrder() {
+        String sizeChoice = getSize();
+        String breadChoice = getBread();
+        String meatChoice = getMeat();
+        String cheeseChoice = getCheese();
+        String vegChoice = getVeg();
+        String sauceChoice = getSauce();
+        String spChoice = getSP();
+        return "Sandwich Size: " + sizeChoice +
+                "\nBread: " + breadChoice +
+                "\nMeat: " + meatChoice +
+                "\nCheese: " + cheeseChoice +
+                "\nVegetable: " + vegChoice + 
+                "\nSauce: " + sauceChoice + 
+                "\nSalt and Pepper: " + spChoice;
+    }
+    
+    public String getSize() {
+        if (sixInch.isSelected()) return "Six Inch";
+        else if (footLong.isSelected()) return "Foot Long";
+        else return "None";
+    }
+    
+    public String getBread() {
+        if (italian.isSelected()) return "Italian";
+        else if (wholewht.isSelected()) return "Whole Wheat";
+        else if (Honey.isSelected()) return "Honey Oat";
+        else if (herb.isSelected()) return "Italian Herb & Cheese";
+        else return "None";
+    }
+    
+    public String getMeat() {
+        if (bfh.isSelected()) return "Black Forest Ham";
+        else if (ccc.isSelected()) return "Cold Cut Combo";
+        else if (bmt.isSelected()) return "Italian BMT";
+        else if (turk.isSelected()) return "Turkey Breast";
+        else return "None";
+    }
+    
+    public String getCheese() {
+        if (amer.isSelected()) return "American";
+        else if (mc.isSelected()) return "Monterey Cheddar";
+        else if (sm.isSelected()) return "Shredded Mozzerella";
+        else if (pj.isSelected()) return "Pepper Jack";
+        else return "None";
+    }
+    
+    public String getVeg() {
+        if (tom.isSelected()) return "Tomatoes";
+        else if (lettuce.isSelected()) return "Lettuce";
+        else if (pickle.isSelected()) return "Pickles";
+        else return "None";
+    }
+    
+    public String getSauce() {
+        if (mayo.isSelected()) return "Mayonnaise";
+        else if (must.isSelected()) return "Mustard";
+        else if (ranch.isSelected()) return "Ranch";
+        else return "None";
+    }
+    
+    public String getSP() {
+        if (y.isSelected()) return "Yes";
+        else if (n.isSelected()) return "No";
+        else return "None";
     }
 
 }
