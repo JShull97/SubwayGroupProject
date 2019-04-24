@@ -2,6 +2,9 @@
 //  Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //  Date:  4/12/2019
 //  Purpose:  An application of automated ordering system for Subway
+
+package groupprojectsubway;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
