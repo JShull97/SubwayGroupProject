@@ -1,9 +1,6 @@
-#sixInch{
-    font-size: 32px;
-}
 
 .root{
-    -fx-background-color: #009743;
+    -fx-background-image: url("Image/background.jpg");
 }
 
 .button {
@@ -14,44 +11,27 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
-.RadioButotn{
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
 
-}
-
-.radio-button .radio {
-    -fx-border-color: #000;
-    -fx-background-color: white;
-    -fx-border-radius: 15px;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-}
-.radio-button .radio:selected {
-    -fx-background-color: white;
-    -fx-background-image: null;
-}
-.radio-button -radio:armed {
-    -fx-background-color: white;
-    -fx-background-image: null;
-}
-.radio-button -radio:determinate {
-    -fx-background-color: white;
-    -fx-background-image: null;
-}
-.radio-button -radio:indeterminate {
-    -fx-background-color: white;
-    -fx-background-image: null;
-}
-.radio-button .dot {
-    -fx-background-radius: 12px;
-    -fx-padding: 8px;
-}
-#size{
+.label{
     -fx-font-size: 16px;
 
 }
-.shadow{
-        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 
+
+
+
+// RADIO button styles
+
+
+
+.radio-button {
+    -fx-font-family: "Arial";
+    -fx-font-size: 11;
+    /*    -fx-text-fill: rgb(255, 255, 255, 0.4);*/
+    -fx-text-fill: black;
+    /*    -fx-effect: dropshadow(one-pass-box , rgba(0, 0, 0, 0.6), 0, 0.0 , 0 , 1 );*/
+    -fx-border-width: 0px;
+}
+.radio-button:checked{
+    -fx-background-color: yellow;
 }

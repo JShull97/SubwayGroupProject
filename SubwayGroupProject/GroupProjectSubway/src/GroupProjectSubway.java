@@ -238,6 +238,7 @@ public class GroupProjectSubway extends Application{
         
         primaryStage.setTitle("Subway Order System");
 //        scene.getStylesheets().add(this.getClass().getResource("/css/style.css").toExternalForm());
+        breadScene.getStylesheets().add("Style.css");
         primaryStage.setScene(breadScene);
         primaryStage.show();
 
