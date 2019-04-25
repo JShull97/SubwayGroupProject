@@ -48,6 +48,7 @@ public class GroupProjectSubway extends Application {
     RadioButton ranch = new RadioButton("Ranch");
     RadioButton y = new RadioButton("Yes");
     RadioButton n = new RadioButton("No");
+    
 
     @Override
     public void start(Stage primaryStage) {
@@ -223,7 +224,13 @@ public class GroupProjectSubway extends Application {
         spScene.getStylesheets().add("Style.css");
 
         // button event listeners
-        nextBread.setOnAction(e -> window.setScene(meatScene));
+        nextBread.setOnAction(e ->{ 
+            if (sixInch.isSelected() || footLong.isSelected()){
+                if(italian.isSelected() || wholewht.isSelected() || Honey.isSelected() || herb.isSelected()){
+                    window.setScene(meatScene);
+                }
+            }
+        });
         nextMeat.setOnAction(e -> window.setScene(cheeseScene));
         nextCheese.setOnAction(e -> window.setScene(VegScene));
         nextVeg.setOnAction(e -> window.setScene(sauceScene));
