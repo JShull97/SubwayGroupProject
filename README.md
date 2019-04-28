@@ -1,12 +1,6 @@
 # SubwayGroupProject
 # Subway Group Project
 ![Sample Output](bread.PNG)
-![Sample Output](cheese.PNG)
-![Sample Output](salt.PNG)
-![Sample Output](sauce.PNG)
-![Sample Output](meat.PNG)
-![Sample Output](veggie.PNG)
-
 
 ### Design
 A GUI was designed based off JavaFx.Different Scenes are set up to switch between menus. Next Buttons are displayed and are used to advance to each menu selection section. Radio buttons are in place to make selections for sandwiches. An order summary is displayed to summarize specifications. Contact information is prompted for a delivery option, which is then summarized in a text area.
