@@ -1,5 +1,4 @@
 # SubwayGroupProject
-# Subway Group Project
 ![Sample Output](bread.PNG)
 
 ### Design
