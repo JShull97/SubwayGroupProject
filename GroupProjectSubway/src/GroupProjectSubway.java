@@ -1,8 +1,10 @@
+
 //  Program:  Group Project - Subway Sandwich
 //  Developer: Carlene Dvorak, Justin Shull, Koleman Parsley
 //  Date:  4/12/2019
 //  Purpose:  An application of automated ordering system for Subway
 
+// Imports
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Carlene Dvorak
  */
+
 public class GroupProjectSubway extends Application {
 
     Stage window;
@@ -62,6 +65,14 @@ public class GroupProjectSubway extends Application {
         Button nextVeg = new Button("Next");
         Button nextSauce = new Button("Next");
         Button placeOrder = new Button("Place order:");
+        
+        // Back Buttons
+        Button backBread = new Button("Back");
+        Button backMeat = new Button("Back");
+        Button backCheese = new Button("Back");
+        Button backVeg = new Button("Back");
+        Button backSauce = new Button("Back");
+        Button backSP = new Button("Back");
 
         // Start sandwich size       
         ToggleGroup tg = new ToggleGroup();
@@ -91,8 +102,8 @@ public class GroupProjectSubway extends Application {
         // Subway Logo
         HBox subwayPic = new HBox();
         ImageView subwayLogo = new ImageView("Image/Subway.png");
-        subwayLogo.setFitHeight(100);
-        subwayLogo.setFitWidth(200);
+        subwayLogo.setFitHeight(72);
+        subwayLogo.setFitWidth(250);
         subwayPic.getChildren().add(subwayLogo);
         subwayPic.setAlignment(Pos.CENTER);
         VBox vBoxMain = new VBox(5);
@@ -103,7 +114,9 @@ public class GroupProjectSubway extends Application {
         breadPic.getChildren().add(imgBread);
         breadPic.setAlignment(Pos.CENTER);
         VBox vBoxBread = new VBox(5);
-        vBoxBread.getChildren().addAll(bread, nextBread);
+        HBox breadBut = new HBox(15);
+        breadBut.getChildren().addAll(backBread, nextBread);
+        vBoxBread.getChildren().addAll(bread, breadBut);
         //end of bread type
 
         // start meat type   
@@ -120,7 +133,9 @@ public class GroupProjectSubway extends Application {
         HBox meatBox = new HBox(15);
         meatBox.getChildren().addAll(new Label("Meats:    "), bfh, ccc, bmt, turk);
         VBox vBoxMeat = new VBox(5);
-        vBoxMeat.getChildren().addAll(meatBox, nextMeat);
+        HBox meatBut = new HBox(15);
+        meatBut.getChildren().addAll(backMeat, nextMeat);
+        vBoxMeat.getChildren().addAll(meatBox, meatBut);
         // end meat type      
 
         // start cheese
@@ -130,7 +145,9 @@ public class GroupProjectSubway extends Application {
         cheesePic.setAlignment(Pos.CENTER);
         HBox cheeseBox = new HBox(15);
         VBox vBoxCheese = new VBox(5);
-        vBoxCheese.getChildren().addAll(cheeseBox, nextCheese);
+        HBox cheeseBut = new HBox(15);
+        cheeseBut.getChildren().addAll(backCheese, nextCheese);
+        vBoxCheese.getChildren().addAll(cheeseBox, cheeseBut);
 
         ToggleGroup tgCheese = new ToggleGroup();
         amer.setToggleGroup(tgCheese);
@@ -146,8 +163,10 @@ public class GroupProjectSubway extends Application {
         veggiePic.getChildren().add(imgVeg);
         veggiePic.setAlignment(Pos.CENTER);
         HBox veggieBox = new HBox(15);
-        VBox vBoxveg = new VBox(5);
-        vBoxveg.getChildren().addAll(veggieBox, nextVeg);
+        VBox vBoxVeg = new VBox(5);
+        HBox veggieBut = new HBox(15);
+        veggieBut.getChildren().addAll(backVeg, nextVeg);
+        vBoxVeg.getChildren().addAll(veggieBox, veggieBut);
 
         ToggleGroup tgVeg = new ToggleGroup();
         tom.setToggleGroup(tgVeg);
@@ -163,7 +182,9 @@ public class GroupProjectSubway extends Application {
         saucePic.setAlignment(Pos.CENTER);
         HBox sauceBox = new HBox(15);
         VBox vBoxSauce = new VBox(5);
-        vBoxSauce.getChildren().addAll(sauceBox, nextSauce);
+        HBox sauceBut = new HBox(15);
+        sauceBut.getChildren().addAll(backSauce, nextSauce);
+        vBoxSauce.getChildren().addAll(sauceBox, sauceBut);
 
         ToggleGroup tgSauce = new ToggleGroup();
         mayo.setToggleGroup(tgSauce);
@@ -179,7 +200,9 @@ public class GroupProjectSubway extends Application {
         spPic.setAlignment(Pos.CENTER);
         HBox spBox = new HBox(15);
         VBox vBoxSP = new VBox(5);
-        vBoxSP.getChildren().addAll(spBox, placeOrder);
+        HBox spBut = new HBox(15);
+        spBut.getChildren().addAll(backSP, placeOrder);
+        vBoxSP.getChildren().addAll(spBut);
 
         ToggleGroup tgSP = new ToggleGroup();
         y.setToggleGroup(tgSP);
@@ -213,7 +236,7 @@ public class GroupProjectSubway extends Application {
 
         BorderPane VegPane = new BorderPane();
         VegPane.setPadding(new Insets(20));
-        VegPane.setBottom(vBoxveg);
+        VegPane.setBottom(vBoxVeg);
         VegPane.setCenter(veggiePic);
         VegPane.setTop(veggieBox);
 
@@ -230,6 +253,7 @@ public class GroupProjectSubway extends Application {
         spPane.setTop(spBox);
 
         // create all scenes
+        // Applies stylesheets to each scene
         Scene mainScene = new Scene(main, 750, 450);
         mainScene.getStylesheets().add("style.css");
         Scene breadScene = new Scene(breadPane, 750, 450);
@@ -245,14 +269,38 @@ public class GroupProjectSubway extends Application {
         Scene spScene = new Scene(spPane, 750, 450);
         spScene.getStylesheets().add("style.css");
 
-        // button event listeners
+        // Next button event listeners
         startBt.setOnAction(e -> window.setScene(breadScene));
-        nextBread.setOnAction(e -> window.setScene(meatScene));
+        
+        // Makes sure bread and size is selected
+        nextBread.setOnAction(e -> {
+            if (sixInch.isSelected() || footLong.isSelected()) {
+                if (italian.isSelected() || wholewht.isSelected() || Honey.isSelected() || herb.isSelected()) {
+                    window.setScene(meatScene);
+                }else {
+                    Label err2 = new Label("Plese select \nBread type");
+                    breadPane.setRight(err2);
+                }
+            }else {
+                Label err = new Label("Please select \nsize of sandwich");
+                breadPane.setRight(err);
+            }
+        });
+        
         nextMeat.setOnAction(e -> window.setScene(cheeseScene));
         nextCheese.setOnAction(e -> window.setScene(VegScene));
         nextVeg.setOnAction(e -> window.setScene(sauceScene));
         nextSauce.setOnAction(e -> window.setScene(spScene));
 
+        
+        // back Button event Listener
+        backBread.setOnAction(e -> window.setScene(mainScene));
+        backMeat.setOnAction(e -> window.setScene(breadScene));
+        backCheese.setOnAction(e -> window.setScene(meatScene));
+        backVeg.setOnAction(e -> window.setScene(cheeseScene));
+        backSauce.setOnAction(e -> window.setScene(VegScene));
+        backSP.setOnAction(e -> window.setScene(sauceScene));
+        
         // display order event listener
         placeOrder.setOnAction((ActionEvent e) -> {
             String order = displayOrder();
@@ -287,13 +335,13 @@ public class GroupProjectSubway extends Application {
         String vegChoice = getVeg();
         String sauceChoice = getSauce();
         String spChoice = getSP();
-        return "Sandwich Size: " + sizeChoice
-                + "\nBread: " + breadChoice
-                + "\nMeat: " + meatChoice
-                + "\nCheese: " + cheeseChoice
-                + "\nVegetable: " + vegChoice
-                + "\nSauce: " + sauceChoice
-                + "\nSalt and Pepper: " + spChoice;
+        return    "Sandwich Size:       " + sizeChoice
+                + "\nBread:                      " + breadChoice
+                + "\nMeat:                       " + meatChoice
+                + "\nCheese:                    " + cheeseChoice
+                + "\nVegetable:               " + vegChoice
+                + "\nSauce:                      " + sauceChoice
+                + "\nSalt and Pepper:     " + spChoice;
     }
 
     public String getSize() {
